@@ -18,7 +18,7 @@ namespace _02._Sorting_Algorithms
 
         public static void BubbleSortDoWhile()
         {
-            int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int[] numbers = new int[] { 1, 15, 4, 60, 2, 11, 5 };
             bool hasSwapped = false;
             do
             {
@@ -39,7 +39,7 @@ namespace _02._Sorting_Algorithms
 
         public static void BubbleSortFor()
         {
-            int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int[] numbers = new int[] { 1, 15, 4, 60, 2, 11, 5 };
 
             for (int i = 0; i < numbers.Length - 1; i++)
             {

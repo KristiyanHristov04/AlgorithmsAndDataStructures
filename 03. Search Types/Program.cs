@@ -9,7 +9,7 @@ namespace _03._Search_Types
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            Console.WriteLine(BinarySearch());
+            Console.WriteLine(JumpSearch());
 
             stopwatch.Stop();
             Console.WriteLine("Milliseconds: " + stopwatch.ElapsedMilliseconds);
@@ -50,30 +50,34 @@ namespace _03._Search_Types
         public static int JumpSearch()
         {
             int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            int target = 50;
+            int target = 5;
 
-            int step = (int)Math.Sqrt(numbers.Length);
+            int length = numbers.Length;
+            int step = (int)Math.Sqrt(length);
+            int prev = 0;
 
-            for (int i = step - 1; i < numbers.Length; i += step)
+            // Jump ahead while target is greater than current element
+            while (prev < length && numbers[Math.Min(step, length) - 1] < target)
             {
-                if (numbers[i] >= target)
-                {
-                    for (int j = i - step + 1; j <= i; j++)
-                    {
-                        if (numbers[j] == target)
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                prev = step;
+                step += (int)Math.Sqrt(length);
 
-                if (i + step >= numbers.Length && numbers[i + 1] == target)
+                if (prev >= length)
                 {
-                    return 1;
+                    return -1; // Not found
                 }
             }
 
-            return 0;
+            // Linear search in the found block
+            for (int i = prev; i < Math.Min(step, length); i++)
+            {
+                if (numbers[i] == target)
+                {
+                    return i; // Return the index
+                }
+            }
+
+            return -1; // Not found
         }
 
         public static int LinearSearch()
