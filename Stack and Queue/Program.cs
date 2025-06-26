@@ -1,4 +1,4 @@
-﻿namespace Stack_and_Queue
+﻿namespace _05._Stack_and_Queue
 {
     internal class Program
     {
